@@ -55,4 +55,4 @@ int main()
         if(hui_wen(i)) ans++;
     }
     cout<<ans;
-}
+}//未完成因为差一个数据点没过
