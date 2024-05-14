@@ -4,8 +4,10 @@ string s[2];
 int first,last;
 int ans;
 int arr[13] = {0,31,28,31,30,31,30,31,31,30,31,30,31};
-int firast_months[2]={0};
-int firast_days[2] = {0};
+int months_first;
+int days_first;
+int months_last;
+int days_last;
 bool panduan(int Year)
 {
     if((Year%4==0 && Year%100!=0)||(Year%400==0)) return true;
@@ -30,10 +32,14 @@ bool hui_wen(int Year)
     months = reserves/100;
     //printf("%d %d",months,days);
     //cout<<reserves/10;
-    if(months<=12&&arr[months]>=days)
-        return true;
-    else
-        return false;
+
+    if(months<=0||months>12||arr[months]<days||days<=0) return false;
+    if(Year == first && months<months_first) return false;
+    if(Year == last && months>months_last) return false;
+    if (Year == first && months == months_first && days < days_first) return false;
+    if (Year == last && months == months_last && days > days_last) return false;
+
+    return true;
 }
 int main()
 {
@@ -45,14 +51,28 @@ int main()
         first *=10, last*=10;
     }
     first /= 10, last/=10;
-        /*cout<<firast_months[0]<<endl;
-        cout<<firast_months[1]<<endl;
-        cout<<firast_days[0]<<endl;
-        cout<<firast_days[1]<<endl;*/
+    for(int i=4;i<6;i++) {
+        months_first += (s[0][i] + '\0' - 48);
+        days_first += (s[0][i+2] + '\0' - 48);
+        months_last += (s[1][i] + '\0' - 48);
+        days_last += (s[1][i+2] + '\0' - 48);
+        months_first*=10;
+        days_first *=10;
+        months_last *=10;
+        days_last *=10;
+    }
+    months_first/=10;
+    days_first/=10;
+    months_last/=10;
+    days_last/=10;
+    /*cout<<months_first<<endl;
+    cout<<months_last<<endl;
+    cout<<days_first<<endl;
+    cout<<days_last<<endl;*/
     //cout<<first<<' '<<last;
     for(int i=first;i<=last;i++)
     {
         if(hui_wen(i)) ans++;
     }
     cout<<ans;
-}//未完成因为差一个数据点没过
+}
