@@ -1,4 +1,5 @@
-/*#include<iostream>
+/*
+#include<iostream>
 using namespace std;
 int arr[1000010];
 int idx_first=0;
@@ -48,4 +49,5 @@ int main()
             My_query();
         }
     }
-}*/
+}
+*/
