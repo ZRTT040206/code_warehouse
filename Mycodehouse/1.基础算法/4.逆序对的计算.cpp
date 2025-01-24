@@ -24,7 +24,7 @@ int main()
     cin >> n;
     for (int i = 0;i < n;i++)
     {
-        scanf_s("%d", &q[i]);
+        scanf("%d", &q[i]);
     }
     s_sort(q, 0, n - 1);
     // for(int i=0;i<n;i++)
