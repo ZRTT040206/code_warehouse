@@ -2,6 +2,7 @@
 #include<map>
 using namespace std;
 map<string,int> maps;
+//使用了map这个stl，不使用的另外再搓
 char x[2];
 int main()
 {
