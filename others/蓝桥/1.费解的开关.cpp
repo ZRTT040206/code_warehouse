@@ -26,10 +26,10 @@ int main()
     {
         for(int i=0;i<5;i++) cin>>q[i];
         int res = 100;
-        
+        memcpy(backg,q,sizeof q);
         for(int op=0;op<32;op++)
         {
-            memcpy(backg,q,sizeof q);
+            
             int step = 0;
             //不管亮灭，枚举32种可能性,确定第一层的一种，之后的解法都确定了
             for(int i=0;i<5;i++)//从00000~11111
@@ -59,6 +59,7 @@ int main()
                 }
             }
             if(!darks) res = min(res,step);
+            //还原现场，
            memcpy(q,backg,sizeof q);
         }
         if(res>6) res = -1;
